@@ -35,6 +35,10 @@ int _printf(const char *format, ...)
 				buffer = char_handler(buffer, (char) va_arg(ap, int), &buffer_size, &bi);
 				fi++;
 				break;
+			case 's':
+				buffer = string_handler(buffer, va_arg(ap, char *), &buffer_size, &bi);
+				fi++;
+				break;
 			case '%':
 				buffer[bi] = '%';
 				fi++;

@@ -7,6 +7,11 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
+                "-Wall",
+                "-Werror",
+                "-Wextra",
+                "-pedantic",
+                "-std=gnu89",
                 "*.c",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}",
