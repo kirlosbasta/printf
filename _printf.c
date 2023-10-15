@@ -14,8 +14,7 @@
 
 int _printf(const char *format, ...)
 {
-	int fi, bi;
-	unsigned int buffer_size;
+	unsigned int buffer_size, fi, bi;
 	char *buffer;
 	va_list ap;
 
@@ -47,6 +46,7 @@ int _printf(const char *format, ...)
 			case '%':
 				buffer[bi] = '%';
 				fi++;
+				break;
 			default:
 				buffer[bi] = format[fi];
 			}
