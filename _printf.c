@@ -20,15 +20,11 @@ int _printf(const char *format, ...)
 
 	va_start(ap, format);
 	if (format == NULL)
-	{
 		return (0);
-	}
 	buffer_size = sizeof(char) * (_strlen(format) + 1);
 	buffer = malloc(buffer_size);
 	if (buffer == NULL)
-	{
 		return (0);
-	}
 	for (fi = 0, bi = 0; format[fi] != '\0'; fi++, bi++)
 	{
 		if (format[fi] == '%')
@@ -36,10 +32,6 @@ int _printf(const char *format, ...)
 			switch (format[fi + 1])
 			{
 			case 'c':
-				buffer = char_handler(buffer, (char) va_arg(ap, int), &buffer_size, &bi);
-				fi++;
-				break;
-			case 'C':
 				buffer = char_handler(buffer, (char) va_arg(ap, int), &buffer_size, &bi);
 				fi++;
 				break;
