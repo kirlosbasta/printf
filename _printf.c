@@ -18,9 +18,9 @@ int _printf(const char *format, ...)
 	char *buffer;
 	va_list ap;
 
-	va_start(ap, format);
-	if (format == NULL)
+	if (format == NULL || (format[0] == '%' && format[1] == '\0'))
 		return (-1);
+	va_start(ap, format);
 	buffer_size = sizeof(char) * (_strlen(format) + 1);
 	buffer = malloc(buffer_size);
 	if (buffer == NULL)
