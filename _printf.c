@@ -20,11 +20,11 @@ int _printf(const char *format, ...)
 
 	va_start(ap, format);
 	if (format == NULL)
-		return (0);
+		return (-1);
 	buffer_size = sizeof(char) * (_strlen(format) + 1);
 	buffer = malloc(buffer_size);
 	if (buffer == NULL)
-		return (0);
+		return (-1);
 	for (fi = 0, bi = 0; format[fi] != '\0'; fi++, bi++)
 	{
 		if (format[fi] == '%')

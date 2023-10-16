@@ -8,7 +8,7 @@
       "args": [],
       "stopAtEntry": true,
       "externalConsole": false,
-      "cwd": "/home/koko/KOKO/ALX/alx-low_level_programming/printf",
+      "cwd": "/home/koko/KOKO/ALX/printf",
       "program": "${fileDirname}/${fileBasenameNoExtension}",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
