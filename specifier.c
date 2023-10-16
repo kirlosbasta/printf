@@ -37,7 +37,7 @@ char *string_handler(char *buffer, char *string, unsigned int *buffer_size,
 	int j;
 
 	if (sizeof(string) != sizeof(char *))
-		return (-1);
+		exit(-1);
 	buffer = _realloc(buffer, *buffer_size, (*buffer_size + _strlen(string)));
 	*buffer_size = *buffer_size + _strlen(string);
 	for (j = 0; string[j]; j++)
