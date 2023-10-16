@@ -38,6 +38,10 @@ int _printf(const char *format, ...)
 				buffer = num_handler(buffer, va_arg(ap, int), &buffer_size, &bi);
 				fi++;
 				break;
+			case 'i':
+				buffer = num_handler(buffer, va_arg(ap, int), &buffer_size, &bi);
+				fi++;
+				break;
 			case '%':
 				buffer[bi] = '%';
 				fi++;
