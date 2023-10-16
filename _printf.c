@@ -1,9 +1,4 @@
 #include "main.h"
-#include <stddef.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <stdarg.h>
-#include <stdlib.h>
 
 /**
  * _printf - printf like function
@@ -37,6 +32,10 @@ int _printf(const char *format, ...)
 				break;
 			case 's':
 				buffer = string_handler(buffer, va_arg(ap, char *), &buffer_size, &bi);
+				fi++;
+				break;
+			case 'd':
+				buffer = num_handler(buffer, va_arg(ap, int), &buffer_size, &bi);
 				fi++;
 				break;
 			case '%':

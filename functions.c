@@ -81,3 +81,22 @@ void *_memcpy(char *dest, char *src, unsigned int n)
 	return (dest);
 }
 
+/**
+ * square10 - Return the n square of 10
+ * @n: number of 10 square
+ * 
+ * Return: N square of 10
+ */
+
+int square10(int n)
+{
+	int sq = 1;
+	
+	n -= 1;
+	while (n > 0)
+	{
+		sq *= 10;
+		n -= 1;
+	}
+	return (sq);
+}
