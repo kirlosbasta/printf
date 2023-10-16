@@ -1,1 +1,1 @@
-A clone version of printf
+This is a team project by Kirlos Basta and Madaraka Lincoln. #Printf
