@@ -5,16 +5,18 @@
 /**
  * char_handler - Handel char format specifier %c
  * @buffer: pointer to string that holds the buffer
- * @character: the char to be added to the buffer
+ * @ap: variant argument list
  * @buffer_size: Old Buffer size
  * @index: Pointer to the index of the buffer
  *
  * Return: The new buffer
  */
 
-char *char_handler(char *buffer, char character,
+char *char_handler(char *buffer, va_list ap,
 		unsigned int *buffer_size, unsigned int *index)
 {
+	char character = (char) va_arg(ap, int);
+
 	buffer = _realloc(buffer, *buffer_size, (*buffer_size + sizeof(char)));
 	*buffer_size = *buffer_size + sizeof(char);
 	buffer[*index] = character;
@@ -24,17 +26,18 @@ char *char_handler(char *buffer, char character,
 /**
  * string_handler - Handel string format specifier %s
  * @buffer: pointer to string that holds the buffer
- * @string: the string to be added to the buffer
+ * @ap: variant argument list
  * @buffer_size: Old Buffer size
  * @index: Pointer to the index of the buffer
  *
  * Return: The new buffer
  */
 
-char *string_handler(char *buffer, char *string, unsigned int *buffer_size,
+char *string_handler(char *buffer, va_list ap, unsigned int *buffer_size,
 					unsigned int *index)
 {
 	int j;
+	char *string = va_arg(ap, char *);
 
 	buffer = _realloc(buffer, *buffer_size, (*buffer_size + _strlen(string)));
 	*buffer_size = *buffer_size + _strlen(string);
@@ -49,17 +52,18 @@ char *string_handler(char *buffer, char *string, unsigned int *buffer_size,
 
 /**
  * num_handler - Handel format specifier %d & %i
- * @buffer: pointer to string that holds the buffer 
- * @num: Number to print
+ * @buffer: pointer to string that holds the buffer
+ * @ap: variant argument list
  * @buffer_size: Old Buffer size
  * @index: Pointer to the index of the buffer
- * 
+ *
  * Return: The new buffer
  */
 
-char *num_handler(char *buffer, int num, unsigned int *buffer_size,
+char *num_handler(char *buffer, va_list ap, unsigned int *buffer_size,
 					unsigned int *index)
 {
+	int num = va_arg(ap, int);
 	int tmp = num, num_dig = 0, minus = 0;
 
 	if (num > INT_MAX || num < INT_MIN)
@@ -90,19 +94,20 @@ char *num_handler(char *buffer, int num, unsigned int *buffer_size,
 
 /**
  * binary_handler - convert digit from base 10 to 2
- * @buffer: pointer to string that holds the buffer 
- * @num: Unsigned number to print
+ * @buffer: pointer to string that holds the buffer
+ * @ap: variant argument list
  * @buffer_size: Old Buffer size
  * @index: Pointer to the index of the buffer
- * 
+ *
  * Return: The new buffer
  */
 
-char *binary_handler(char *buffer, unsigned int num, unsigned int *buffer_size,
+char *binary_handler(char *buffer, va_list ap, unsigned int *buffer_size,
 					unsigned int *index)
 {
 	int remainder, i = 0, tmp_len;
 	char tmp[1024];
+	unsigned int num = va_arg(ap, unsigned int);
 
 	while (num > 0)
 	{
@@ -120,5 +125,39 @@ char *binary_handler(char *buffer, unsigned int num, unsigned int *buffer_size,
 		i--;
 	}
 	*index -= 2;
+	return (buffer);
+}
+
+/**
+ * u_num_handler - Handel format specifier %u
+ * @buffer: pointer to string that holds the buffer
+ * @ap: variant argument list
+ * @buffer_size: Old Buffer size
+ * @index: Pointer to the index of the buffer
+ *
+ * Return: The new buffer
+ */
+
+char *u_num_handler(char *buffer, va_list ap, unsigned int *buffer_size,
+					unsigned int *index)
+{
+	unsigned int num = va_arg(ap, unsigned int);
+	unsigned int tmp = num;
+	int num_dig = 0;
+
+	while (tmp > 0)
+	{
+		tmp /= 10;
+		num_dig++;
+	}
+	buffer = _realloc(buffer, *buffer_size, (*buffer_size + num_dig));
+	*buffer_size = *buffer_size + num_dig;
+	while (num_dig > 0)
+	{
+		buffer[(*index)++] = (num / square10(num_dig) + '0');
+		num %= square10(num_dig);
+		num_dig -= 1;
+	}
+	(*index)--;
 	return (buffer);
 }
