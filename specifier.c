@@ -87,3 +87,38 @@ char *num_handler(char *buffer, int num, unsigned int *buffer_size,
 	(*index)--;
 	return (buffer);
 }
+
+/**
+ * binary_handler - convert digit from base 10 to 2
+ * @buffer: pointer to string that holds the buffer 
+ * @num: Unsigned number to print
+ * @buffer_size: Old Buffer size
+ * @index: Pointer to the index of the buffer
+ * 
+ * Return: The new buffer
+ */
+
+char *binary_handler(char *buffer, unsigned int num, unsigned int *buffer_size,
+					unsigned int *index)
+{
+	int remainder, i = 0, tmp_len;
+	char tmp[1024];
+
+	while (num > 0)
+	{
+		remainder = num % 2;
+		num /= 2;
+		tmp[i++] = remainder + '0';
+	}
+	tmp[i] = '\0';
+	tmp_len = _strlen(tmp);
+	buffer = _realloc(buffer, *buffer_size, *buffer_size + tmp_len);
+	*buffer_size += tmp_len;
+	while (i >= 0)
+	{
+		buffer[(*index)++] = tmp[i - 1];
+		i--;
+	}
+	*index -= 2;
+	return (buffer);
+}

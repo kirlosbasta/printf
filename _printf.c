@@ -42,6 +42,10 @@ int _printf(const char *format, ...)
 				buffer = num_handler(buffer, va_arg(ap, int), &buffer_size, &bi);
 				fi++;
 				break;
+			case 'b':
+				buffer = binary_handler(buffer, va_arg(ap, unsigned int), &buffer_size, &bi);
+				fi++;
+				break;
 			case '%':
 				buffer[bi] = '%';
 				fi++;

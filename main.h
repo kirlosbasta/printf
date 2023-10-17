@@ -18,6 +18,9 @@ char *string_handler(char *buffer, char *string, unsigned int *buffer_size,
 					unsigned int *index);
 char *num_handler(char *buffer, int num, unsigned int *buffer_size,
 					unsigned int *index);
+char *binary_handler(char *buffer, unsigned int num, unsigned int *buffer_size,
+					unsigned int *index);
 int square10(int n);
+void reverse_array(int *a, int n);
 
 #endif
