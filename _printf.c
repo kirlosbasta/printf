@@ -2,6 +2,7 @@
 /**
  * _printf - printf like function
  * @format: string may contain format specifier
+ *
  * Return: The length of string
  */
 int _printf(const char *format, ...)
@@ -9,7 +10,8 @@ int _printf(const char *format, ...)
 	f_list list[] = {
 	{'c', char_handler}, {'s', string_handler}, {'d', num_handler},
 	{'i', num_handler}, {'b', binary_handler}, {'u', u_num_handler},
-	{'o', octal_handler}, {'\0', NULL}
+	{'o', octal_handler}, {'x', hexadecimal_handler}, {'X', Hexadecimal_handler}, 
+	{'\0', NULL}
 };
 	int i, unknown = 0;
 	unsigned int buffer_size, fi, bi;

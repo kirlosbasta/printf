@@ -37,6 +37,10 @@ char *binary_handler(char *buffer, va_list ap, unsigned int *buffer_size,
 					unsigned int *index);
 char *octal_handler(char *buffer, va_list ap, unsigned int *buffer_size,
 					unsigned int *index);
+char *hexadecimal_handler(char *buffer, va_list ap, unsigned int *buffer_size,
+					unsigned int *index);
+char *Hexadecimal_handler(char *buffer, va_list ap, unsigned int *buffer_size,
+					unsigned int *index);
 int square10(int n);
 void reverse_array(int *a, int n);
 

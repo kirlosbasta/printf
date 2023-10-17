@@ -35,3 +35,77 @@ char *octal_handler(char *buffer, va_list ap, unsigned int *buffer_size,
 	*index -= 2;
 	return (buffer);
 }
+
+/**
+ * hexadecimal_handler - convert digit from base 10 to 16
+ * @buffer: pointer to string that holds the buffer
+ * @ap: variant argument list
+ * @buffer_size: Old Buffer size
+ * @index: Pointer to the index of the buffer
+ *
+ * Return: The new buffer
+ */
+char *hexadecimal_handler(char *buffer, va_list ap, unsigned int *buffer_size,
+					unsigned int *index)
+{
+	unsigned long int num = va_arg(ap, unsigned long int);
+	unsigned int remainder, tmp_len;
+	int i = 0;
+	char hex[] = "0123456789abcdef";
+	char tmp[1024];
+
+	while (num > 0)
+	{
+		remainder = num % 16;
+		num /= 16;
+		tmp[i++] = hex[remainder];
+	}
+	tmp[i] = '\0';
+	tmp_len = _strlen(tmp);
+	buffer = _realloc(buffer, *buffer_size, (*buffer_size + tmp_len));
+	*buffer_size += tmp_len;
+	while (i >= 0)
+	{
+		buffer[(*index)++] = tmp[i - 1];
+		i--;
+	}
+	*index -= 2;
+	return (buffer);
+}
+
+/**
+ * hexadecimal_handler - convert digit from base 10 to 16
+ * @buffer: pointer to string that holds the buffer
+ * @ap: variant argument list
+ * @buffer_size: Old Buffer size
+ * @index: Pointer to the index of the buffer
+ *
+ * Return: The new buffer
+ */
+char *Hexadecimal_handler(char *buffer, va_list ap, unsigned int *buffer_size,
+					unsigned int *index)
+{
+	unsigned long int num = va_arg(ap, unsigned long int);
+	unsigned int remainder, tmp_len;
+	int i = 0;
+	char hex[] = "0123456789ABCDEF";
+	char tmp[1024];
+
+	while (num > 0)
+	{
+		remainder = num % 16;
+		num /= 16;
+		tmp[i++] = hex[remainder];
+	}
+	tmp[i] = '\0';
+	tmp_len = _strlen(tmp);
+	buffer = _realloc(buffer, *buffer_size, (*buffer_size + tmp_len));
+	*buffer_size += tmp_len;
+	while (i >= 0)
+	{
+		buffer[(*index)++] = tmp[i - 1];
+		i--;
+	}
+	*index -= 2;
+	return (buffer);
+}
