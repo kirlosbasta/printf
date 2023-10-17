@@ -139,3 +139,39 @@ char *rev_string(char *buffer, va_list ap, unsigned int *buffer_size,
 	(*index)--;
 	return (buffer);
 }
+
+/**
+ * rot13_handler - Handel custoum format specifier %R
+ * @buffer: pointer to string that holds the buffer
+ * @ap: variant argument list
+ * @buffer_size: Old Buffer size
+ * @index: Pointer to the index of the buffer
+ *
+ * Return: The new buffer
+ */
+
+char *rot13_handler(char *buffer, va_list ap, unsigned int *buffer_size,
+				 unsigned int *index)
+{
+	char *string = va_arg(ap, char *);
+	char *cpy_str;
+	int str_len, i;
+
+	if (string == NULL)
+		return (buffer);
+	str_len = _strlen(string);
+	cpy_str = malloc(str_len + 1);
+	if (cpy_str == NULL)
+		return (buffer);
+	_strcpy(cpy_str, string);
+	cpy_str[str_len] = '\0'; 
+	rot13(cpy_str);
+	buffer = _realloc(buffer, *buffer_size, *buffer_size + str_len);
+	*buffer_size += str_len;
+	for (i = 0; cpy_str[i] != '\0'; i++)
+	{
+		buffer[(*index)++] = cpy_str[i];
+	}
+	(*index)--;
+	return (buffer);
+}

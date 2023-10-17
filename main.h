@@ -43,7 +43,11 @@ char *Hexadecimal_handler(char *buffer, va_list ap, unsigned int *buffer_size,
 					unsigned int *index);
 char *rev_string(char *buffer, va_list ap, unsigned int *buffer_size,
 				unsigned int *index);
+char *rot13_handler(char *buffer, va_list ap, unsigned int *buffer_size,
+				 unsigned int *index);
 int square10(int n);
 void reverse_array(char *a, int n);
+char *rot13(char *s);
+char *_strcpy(char *dest, char *src);
 
 #endif
