@@ -39,6 +39,8 @@ char *string_handler(char *buffer, va_list ap, unsigned int *buffer_size,
 	int j;
 	char *string = va_arg(ap, char *);
 
+	if (string == NULL)
+		return (buffer);
 	buffer = _realloc(buffer, *buffer_size, (*buffer_size + _strlen(string)));
 	*buffer_size = *buffer_size + _strlen(string);
 	for (j = 0; string[j]; j++)

@@ -109,3 +109,33 @@ char *Hexadecimal_handler(char *buffer, va_list ap, unsigned int *buffer_size,
 	*index -= 2;
 	return (buffer);
 }
+
+/**
+ * rev_string - reverse the string of %r
+ * @buffer: pointer to string that holds the buffer
+ * @ap: variant argument list
+ * @buffer_size: Old Buffer size
+ * @index: Pointer to the index of the buffer
+ *
+ * Return: The new buffer
+ */
+
+char *rev_string(char *buffer, va_list ap, unsigned int *buffer_size,
+				 unsigned int *index)
+{
+	char *string = va_arg(ap, char *);
+	int tmp_len;
+
+	if (string == NULL)
+		return (buffer);
+	tmp_len = _strlen(string);
+	buffer = _realloc(buffer, *buffer_size, *buffer_size + tmp_len);
+	*buffer_size += tmp_len;
+	while (tmp_len > 0)
+	{
+		buffer[(*index)++] = string[tmp_len - 1];
+		tmp_len--;
+	}
+	(*index)--;
+	return (buffer);
+}

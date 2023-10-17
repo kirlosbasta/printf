@@ -41,7 +41,9 @@ char *hexadecimal_handler(char *buffer, va_list ap, unsigned int *buffer_size,
 					unsigned int *index);
 char *Hexadecimal_handler(char *buffer, va_list ap, unsigned int *buffer_size,
 					unsigned int *index);
+char *rev_string(char *buffer, va_list ap, unsigned int *buffer_size,
+				unsigned int *index);
 int square10(int n);
-void reverse_array(int *a, int n);
+void reverse_array(char *a, int n);
 
 #endif

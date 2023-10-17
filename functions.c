@@ -104,7 +104,7 @@ int square10(int n)
  * @n: number of element
  * Return Notiing
  */
-void reverse_array(int *a, int n)
+void reverse_array(char *a, int n)
 {
 	int i;
 	int temp;
