@@ -69,3 +69,41 @@ void print_buffer(char *str)
 
 	write(1, str, len);
 }
+
+/**
+ * c_hex - convert a number to hex
+ * @num: decimal number
+ * @tmp: Conatiner to a string
+ * 
+ * Return: Pointer to string
+ */
+
+char *c_hex(int num, char *tmp)
+{
+	char hex[] = "0123456789ABCDEF";
+	int i = 0, j = 0;
+	char c[3];
+
+	if (num < 16)
+	{
+		tmp[i++] = '0';
+		tmp[i++] = hex[num];
+		tmp[i] = '\0';
+		return (tmp);
+	}
+	else
+	{
+		while (num > 0)
+		{
+			c[i++] = (num % 16) + '0';
+			num /= 16;
+		}
+		c[i] = '\0';
+	}
+	for (; c[i - 1] > 0; i--)
+	{
+		tmp[j++] = c[i];
+	}
+	tmp[j] = '\0';
+	return (tmp);
+}

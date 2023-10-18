@@ -173,5 +173,6 @@ char *rot13_handler(char *buffer, va_list ap, unsigned int *buffer_size,
 		buffer[(*index)++] = cpy_str[i];
 	}
 	(*index)--;
+	free(cpy_str);
 	return (buffer);
 }

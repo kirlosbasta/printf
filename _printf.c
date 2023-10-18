@@ -12,7 +12,7 @@ int _printf(const char *format, ...)
 	{'i', num_handler}, {'b', binary_handler}, {'u', u_num_handler},
 	{'o', octal_handler}, {'x', hexadecimal_handler}, {'X', Hexadecimal_handler}, 
 	{'r', rev_string}, {'R', rot13_handler}, {'p', address_handler}, 
-	{'\0', NULL}
+	{'S', non_printable}, {'\0', NULL}
 };
 	int i, unknown = 0;
 	unsigned int buffer_size, fi, bi;

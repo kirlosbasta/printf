@@ -48,3 +48,55 @@ char *address_handler(char *buffer, va_list ap, unsigned int *buffer_size,
 	*index -= 2;
 	return (buffer);
 }
+
+/**
+ * non_printable - convert non printable character to \x followed by hex ascii
+ * @buffer: pointer to string that holds the buffer
+ * @ap: variant argument list
+ * @buffer_size: Old Buffer size
+ * @index: Pointer to the index of the buffer
+ *
+ * Return: The new buffer
+ */
+
+char *non_printable(char *buffer, va_list ap, unsigned int *buffer_size, 
+                    unsigned int *index)
+{
+    int i, j, x;
+	char *string = va_arg(ap, char *);
+    char *tmp = malloc(3);
+
+	if (string == NULL)
+    {
+        print_buffer("(nil)");
+		return (buffer);
+    }
+    for (i = 0, j = 0; string[i] != '\0'; i++)
+    {
+        if ((string[i] > 0 && string[i] < 32) || string[i] >= 127)
+            j++;
+    }
+    buffer = _realloc(buffer, *buffer_size, *buffer_size + (j * 4) + _strlen(string));
+    *buffer_size += (j * 4) + _strlen(string);
+    for (i = 0; string[i] != '\0'; i++)
+    {
+        if ((string[i] > 0 && string[i] < 32) || string[i] >= 127)
+        {
+            buffer[(*index)++] = 92;
+            buffer[(*index)++] = 'x';
+            tmp = c_hex((int)string[i], tmp);
+            x = 0;
+            while (tmp[x] != '\0')
+            {
+                buffer[(*index)++] = tmp[x++];
+            }
+        }
+        else
+        {
+            buffer[(*index)++] = string[i];
+        }
+    }
+    (*index)--;
+    free(tmp);
+    return (buffer);
+}
