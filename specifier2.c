@@ -20,6 +20,14 @@ char *address_handler(char *buffer, va_list ap, unsigned int *buffer_size,
 	char tmp[1024];
     unsigned long address_num = (unsigned long) address;
 
+    if (address == NULL)
+    {
+        address = "(nil)";
+        print_buffer(buffer);
+        print_buffer(address);
+        *index = 0;
+        return (buffer);
+    }
     while (address_num > 0)
 	{
 		remainder = address_num % 16;

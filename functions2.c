@@ -55,3 +55,17 @@ char *_strcpy(char *dest, char *src)
 	*destptr = '\0';
 	return (dest);
 }
+
+/**
+ * print_buffer - Print the buffer
+ * @str: pointer to string
+ * 
+ * Return: Nothing
+ */
+
+void print_buffer(char *str)
+{
+	int len = _strlen(str);
+
+	write(1, str, len);
+}
