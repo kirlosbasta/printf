@@ -10,37 +10,37 @@
  * Return: The new buffer
  */
 
-char *address_handler(char *buffer, va_list ap, unsigned int *buffer_size, 
-                    unsigned int *index)
+char *address_handler(char *buffer, va_list ap, unsigned int *buffer_size,
+			unsigned int *index)
 {
-    void *address = va_arg(ap, void *);
-    unsigned int remainder, tmp_len;
+	void *address = va_arg(ap, void *);
+	unsigned int remainder, tmp_len;
 	int i = 0;
 	char hex[] = "0123456789abcdef";
 	char tmp[1024];
-    unsigned long address_num = (unsigned long) address;
+	unsigned long address_num = (unsigned long) address;
 
-    if (address == NULL)
-    {
-        address = "(nil)";
-        print_buffer(buffer);
-        print_buffer(address);
-        *index = 0;
-        return (buffer);
-    }
-    while (address_num > 0)
+	if (address == NULL)
+	{
+		address = "(nil)";
+		print_buffer(buffer);
+		print_buffer(address);
+		*index = 0;
+		return (buffer);
+	}
+	while (address_num > 0)
 	{
 		remainder = address_num % 16;
 		address_num /= 16;
 		tmp[i++] = hex[remainder];
 	}
-    tmp[i] = '\0';
+	tmp[i] = '\0';
 	tmp_len = _strlen(tmp);
 	buffer = _realloc(buffer, *buffer_size, (*buffer_size + tmp_len));
 	*buffer_size += tmp_len;
-    buffer[(*index)++] = '0';
-    buffer[(*index)++] = 'x';
-    while (i >= 0)
+	buffer[(*index)++] = '0';
+	buffer[(*index)++] = 'x';
+	while (i >= 0)
 	{
 		buffer[(*index)++] = tmp[i - 1];
 		i--;
@@ -59,44 +59,46 @@ char *address_handler(char *buffer, va_list ap, unsigned int *buffer_size,
  * Return: The new buffer
  */
 
-char *non_printable(char *buffer, va_list ap, unsigned int *buffer_size, 
-                    unsigned int *index)
+char *non_printable(char *buffer, va_list ap, unsigned int *buffer_size,
+			unsigned int *index)
 {
-    int i, j, x;
+	int i, j, x;
 	char *string = va_arg(ap, char *);
-    char *tmp = malloc(3);
+	char *tmp = malloc(3);
 
 	if (string == NULL)
-    {
-        print_buffer("(nil)");
+	{
+		print_buffer("(nil)");
 		return (buffer);
-    }
-    for (i = 0, j = 0; string[i] != '\0'; i++)
-    {
-        if ((string[i] > 0 && string[i] < 32) || string[i] >= 127)
-            j++;
-    }
-    buffer = _realloc(buffer, *buffer_size, *buffer_size + (j * 4) + _strlen(string));
-    *buffer_size += (j * 4) + _strlen(string);
-    for (i = 0; string[i] != '\0'; i++)
-    {
-        if ((string[i] > 0 && string[i] < 32) || string[i] >= 127)
-        {
-            buffer[(*index)++] = 92;
-            buffer[(*index)++] = 'x';
-            tmp = c_hex((int)string[i], tmp);
-            x = 0;
-            while (tmp[x] != '\0')
-            {
-                buffer[(*index)++] = tmp[x++];
-            }
-        }
-        else
-        {
-            buffer[(*index)++] = string[i];
-        }
-    }
-    (*index)--;
-    free(tmp);
-    return (buffer);
+	}
+	for (i = 0, j = 0; string[i] != '\0'; i++)
+	{
+		if ((string[i] > 0 && string[i] < 32) || string[i] >= 127)
+			j++;
+	}
+	buffer = _realloc(buffer, *buffer_size,
+			*buffer_size + (j * 4) + _strlen(string));
+	*buffer_size += (j * 4) + _strlen(string);
+	for (i = 0; string[i] != '\0'; i++)
+	{
+		if ((string[i] > 0 && string[i] < 32) || string[i] >= 127)
+		{
+			buffer[(*index)++] = 92;
+			buffer[(*index)++] = 'x';
+			tmp = c_hex((int)string[i], tmp);
+			x = 0;
+			while (tmp[x] != '\0')
+			{
+				buffer[(*index)++] = tmp[x++];
+			}
+		}
+		else
+		{
+			buffer[(*index)++] = string[i];
+		}
+	}
+	(*index)--;
+	free(tmp);
+	return (buffer);
 }
+

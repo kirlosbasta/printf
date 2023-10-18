@@ -164,7 +164,7 @@ char *rot13_handler(char *buffer, va_list ap, unsigned int *buffer_size,
 	if (cpy_str == NULL)
 		return (buffer);
 	_strcpy(cpy_str, string);
-	cpy_str[str_len] = '\0'; 
+	cpy_str[str_len] = '\0';
 	rot13(cpy_str);
 	buffer = _realloc(buffer, *buffer_size, *buffer_size + str_len);
 	*buffer_size += str_len;
@@ -176,3 +176,4 @@ char *rot13_handler(char *buffer, va_list ap, unsigned int *buffer_size,
 	free(cpy_str);
 	return (buffer);
 }
+

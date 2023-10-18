@@ -8,6 +8,8 @@
 #include <stdlib.h>
 #include <limits.h>
 
+#define BUFFER_SIZE 1024
+
 /**
  * struct c_type - struct for fuction and it's specifier
  * @c: character
@@ -22,6 +24,7 @@ typedef struct c_type
 
 
 int _printf(const char *format, ...);
+int format_handler(va_list ap, f_list *list, const char *format);
 int _strlen(const char *str);
 void *_memcpy(char *dest, char *src, unsigned int n);
 char *char_handler(char *buffer, va_list ap
@@ -44,11 +47,11 @@ char *Hexadecimal_handler(char *buffer, va_list ap, unsigned int *buffer_size,
 char *rev_string(char *buffer, va_list ap, unsigned int *buffer_size,
 				unsigned int *index);
 char *rot13_handler(char *buffer, va_list ap, unsigned int *buffer_size,
-				 unsigned int *index);
-char *address_handler(char *buffer, va_list ap, unsigned int *buffer_size, 
-                    unsigned int *index);
-char *non_printable(char *buffer, va_list ap, unsigned int *buffer_size, 
-                    unsigned int *index);
+				unsigned int *index);
+char *address_handler(char *buffer, va_list ap, unsigned int *buffer_size,
+				unsigned int *index);
+char *non_printable(char *buffer, va_list ap, unsigned int *buffer_size,
+				unsigned int *index);
 int square10(int n);
 void reverse_array(char *a, int n);
 char *rot13(char *s);
@@ -57,3 +60,4 @@ void print_buffer(char *str);
 char *c_hex(int num, char *tmp);
 
 #endif
+

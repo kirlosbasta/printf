@@ -59,7 +59,7 @@ char *_strcpy(char *dest, char *src)
 /**
  * print_buffer - Print the buffer
  * @str: pointer to string
- * 
+ *
  * Return: Nothing
  */
 
@@ -74,7 +74,7 @@ void print_buffer(char *str)
  * c_hex - convert a number to hex
  * @num: decimal number
  * @tmp: Conatiner to a string
- * 
+ *
  * Return: Pointer to string
  */
 
@@ -107,3 +107,4 @@ char *c_hex(int num, char *tmp)
 	tmp[j] = '\0';
 	return (tmp);
 }
+
