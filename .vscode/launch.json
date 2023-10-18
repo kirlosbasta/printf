@@ -6,10 +6,10 @@
       "type": "cppdbg",
       "request": "launch",
       "args": [],
-      "stopAtEntry": false,
+      "stopAtEntry": true,
       "externalConsole": false,
       "cwd": "/home/koko/KOKO/ALX/printf",
-      "program": "/home/koko/KOKO/ALX/printf/build/Debug/outDebug",
+      "program": "${fileDirname}/${fileBasenameNoExtension}",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
