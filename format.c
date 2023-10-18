@@ -33,11 +33,6 @@ int format_handler(va_list ap, f_list list[], const char *format)
 					break;
 				}
 			}
-			if (format[fi + 1] == '%')
-			{
-				buffer[bi] = '%';
-				fi++;
-			}
 			if (unknown == 0)
 				buffer[bi] = format[fi];
 		}

@@ -9,6 +9,7 @@
 #include <limits.h>
 
 #define BUFFER_SIZE 1024
+#define UNUSED __attribute__((unused))
 
 /**
  * struct c_type - struct for fuction and it's specifier
@@ -27,6 +28,8 @@ int _printf(const char *format, ...);
 int format_handler(va_list ap, f_list *list, const char *format);
 int _strlen(const char *str);
 void *_memcpy(char *dest, char *src, unsigned int n);
+char *percent_handler(char *buffer, UNUSED va_list ap,
+	UNUSED unsigned int *buffer_size, unsigned int *index);
 char *char_handler(char *buffer, va_list ap
 		, unsigned int *buffer_size, unsigned int *index);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);

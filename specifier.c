@@ -36,13 +36,19 @@ char *char_handler(char *buffer, va_list ap,
 char *string_handler(char *buffer, va_list ap, unsigned int *buffer_size,
 					unsigned int *index)
 {
-	int j;
+	int j, len;
 	char *string = va_arg(ap, char *);
 
 	if (string == NULL)
 		string = "(null)";
-	buffer = _realloc(buffer, *buffer_size, (*buffer_size + _strlen(string)));
-	*buffer_size = *buffer_size + _strlen(string);
+	len = _strlen(string);
+	if (len == 0)
+	{
+		(*index)--;
+		return (buffer);
+	}
+	buffer = _realloc(buffer, *buffer_size, (*buffer_size + len));
+	*buffer_size = *buffer_size + len;
 	for (j = 0; string[j]; j++)
 	{
 		buffer[*index] = string[j];

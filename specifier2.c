@@ -102,3 +102,19 @@ char *non_printable(char *buffer, va_list ap, unsigned int *buffer_size,
 	return (buffer);
 }
 
+/**
+ * percent_handler - Handle double percent
+ * @buffer: pointer to string that holds the buffer
+ * @ap: variant argument list
+ * @buffer_size: Old Buffer size
+ * @index: Pointer to the index of the buffer
+ *
+ * Return: The new buffer
+ */
+
+char *percent_handler(char *buffer, UNUSED va_list ap,
+	UNUSED unsigned int *buffer_size, unsigned int *index)
+{
+	buffer[*index] = '%';
+	return (buffer);
+}
