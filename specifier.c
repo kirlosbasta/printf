@@ -75,11 +75,13 @@ char *string_handler(char *buffer, va_list ap, unsigned int *buffer_size,
 char *num_handler(char *buffer, va_list ap, unsigned int *buffer_size,
 					unsigned int *index)
 {
-	int num = va_arg(ap, int);
-	int tmp = num, num_dig = 0, minus = 0;
+	long num = va_arg(ap, int);
+	long tmp = num, num_dig = 0, minus = 0;
 
-	if (num > INT_MAX || num < INT_MIN)
-		return (buffer);
+	if (num == 0)
+	{
+		buffer[(*index)++] = '0';
+	}
 	if (num < 0)
 	{
 		buffer[(*index)++] = '-';
