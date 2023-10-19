@@ -17,6 +17,11 @@ char *octal_handler(char *buffer, va_list ap, unsigned int *buffer_size,
 	int remainder, i = 0, tmp_len;
 	char tmp[1024];
 
+	if (num == 0)
+	{
+		buffer[*index] = '0';
+		return (buffer);
+	}
 	while (num > 0)
 	{
 		remainder = num % 8;
@@ -48,12 +53,17 @@ char *octal_handler(char *buffer, va_list ap, unsigned int *buffer_size,
 char *hexadecimal_handler(char *buffer, va_list ap, unsigned int *buffer_size,
 					unsigned int *index)
 {
-	unsigned long int num = va_arg(ap, unsigned long int);
-	unsigned int remainder, tmp_len;
+	int num = va_arg(ap, long int);
+	long int remainder, tmp_len;
 	int i = 0;
 	char hex[] = "0123456789abcdef";
 	char tmp[1024];
 
+	if (num == 0)
+	{
+		buffer[*index] = '0';
+		return (buffer);
+	}
 	while (num > 0)
 	{
 		remainder = num % 16;
@@ -91,6 +101,11 @@ char *Hexadecimal_handler(char *buffer, va_list ap, unsigned int *buffer_size,
 	char hex[] = "0123456789ABCDEF";
 	char tmp[1024];
 
+	if (num == 0)
+	{
+		buffer[*index] = '0';
+		return (buffer);
+	}
 	while (num > 0)
 	{
 		remainder = num % 16;

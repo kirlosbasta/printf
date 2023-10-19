@@ -164,6 +164,11 @@ char *u_num_handler(char *buffer, va_list ap, unsigned int *buffer_size,
 	unsigned int tmp = num;
 	int num_dig = 0;
 
+	if (num == 0)
+	{
+		buffer[*index] = '0';
+		return (buffer);
+	}
 	while (tmp > 0)
 	{
 		tmp /= 10;
