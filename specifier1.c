@@ -53,7 +53,7 @@ char *octal_handler(char *buffer, va_list ap, unsigned int *buffer_size,
 char *hexadecimal_handler(char *buffer, va_list ap, unsigned int *buffer_size,
 					unsigned int *index)
 {
-	int num = va_arg(ap, long int);
+	unsigned int num = va_arg(ap, long int);
 	long int remainder, tmp_len;
 	int i = 0;
 	char hex[] = "0123456789abcdef";
@@ -95,7 +95,7 @@ char *hexadecimal_handler(char *buffer, va_list ap, unsigned int *buffer_size,
 char *Hexadecimal_handler(char *buffer, va_list ap, unsigned int *buffer_size,
 					unsigned int *index)
 {
-	unsigned long int num = va_arg(ap, unsigned long int);
+	unsigned int num = va_arg(ap, unsigned long int);
 	unsigned int remainder, tmp_len;
 	int i = 0;
 	char hex[] = "0123456789ABCDEF";

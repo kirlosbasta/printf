@@ -14,8 +14,8 @@ int main(void)
 	long int l = UINT_MAX;
 
 	l += 1024;
-	len = _printf("%x\n", l);
-	len2 = printf("%x\n", l);
+	len = _printf("%x", l);
+	len2 = printf("%x", l);
 	fflush(stdout);
 	if (len != len2)
 	{
