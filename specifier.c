@@ -123,6 +123,11 @@ char *binary_handler(char *buffer, va_list ap, unsigned int *buffer_size,
 	char tmp[1024];
 	unsigned int num = va_arg(ap, unsigned int);
 
+	if (num == 0)
+	{
+		buffer[*index] = '0';
+		return (buffer);
+	}
 	while (num > 0)
 	{
 		remainder = num % 2;
