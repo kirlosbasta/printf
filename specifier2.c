@@ -22,10 +22,13 @@ char *address_handler(char *buffer, va_list ap, unsigned int *buffer_size,
 
 	if (address == NULL)
 	{
-		address = "(nil)";
-		print_buffer(buffer);
-		print_buffer(address);
-		*index = 0;
+		buffer = _realloc(buffer, *buffer_size, (*buffer_size + 5));
+		*buffer_size += 5;
+		buffer[(*index)++] = '(';
+		buffer[(*index)++] = 'n';
+		buffer[(*index)++] = 'i';
+		buffer[(*index)++] = 'l';
+		buffer[(*index)] = ')';
 		return (buffer);
 	}
 	while (address_num > 0)
