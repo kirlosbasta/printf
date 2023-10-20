@@ -19,7 +19,7 @@ char *char_handler(char *buffer, va_list ap,
 
 	if (character == '\0')
 	{
-		buffer[*index] = '\n';
+		buffer[*index] = 7;
 		return (buffer);
 	}
 	buffer = _realloc(buffer, *buffer_size, (*buffer_size + sizeof(char)));
