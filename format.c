@@ -41,10 +41,6 @@ int format_handler(va_list ap, f_list list[], const char *format)
 	}
 	buffer[bi] = '\0';
 	buffer_size = _strlen(buffer);
-	if (buffer[0] = '\0')
-	{
-		buffer_size++;
-	}
 	write(1, buffer, buffer_size);
 	free(buffer);
 	return (buffer_size);
