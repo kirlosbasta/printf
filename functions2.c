@@ -95,12 +95,13 @@ char *c_hex(int num, char *tmp)
 	{
 		while (num > 0)
 		{
-			c[i++] = (num % 16) + '0';
+			c[i++] = hex[(num % 16)];
 			num /= 16;
 		}
 		c[i] = '\0';
 	}
-	for (; c[i - 1] > 0; i--)
+	i--;
+	for (; i >= 0; i--)
 	{
 		tmp[j++] = c[i];
 	}

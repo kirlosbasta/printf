@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <limits.h>
 #include "main.h"
 
 /**
@@ -11,11 +10,9 @@
 int main(void)
 {
 	int len, len2;
-	long int l = UINT_MAX;
 
-	l += 1024;
-	len = _printf("%x", l);
-	len2 = printf("%x", l);
+	len = _printf("Could you print some non-prntable characters?\n%S\nThanks!\n", "Sure:\x1F\x7F\n");
+	len2 = printf("Could you print some non-prntable characters?\nSure:\\x1F\\x7F\\x0A\nThanks!\n");
 	fflush(stdout);
 	if (len != len2)
 	{
