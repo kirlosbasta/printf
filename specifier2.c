@@ -73,7 +73,7 @@ char *non_printable(char *buffer, va_list ap, unsigned int *buffer_size,
 	}
 	for (i = 0, j = 0; string[i] != '\0'; i++)
 	{
-		if (string[i] < 32 || string[i] >= 127)
+		if ((string[i] < 0 && string[i] < 32) || string[i] >= 127)
 			j++;
 	}
 	buffer = _realloc(buffer, *buffer_size,
@@ -81,7 +81,7 @@ char *non_printable(char *buffer, va_list ap, unsigned int *buffer_size,
 	*buffer_size += (j * 4) + _strlen(string);
 	for (i = 0; string[i] != '\0'; i++)
 	{
-		if (string[i] < 32 || string[i] >= 127)
+		if ((string[i] < 0 && string[i] < 32) || string[i] >= 127)
 		{
 			buffer[(*index)++] = 92;
 			buffer[(*index)++] = 'x';
