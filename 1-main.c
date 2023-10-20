@@ -11,8 +11,8 @@ int main(void)
 {
 	int len, len2;
 
-	len = _printf("- What did you say?\n- %S\n- That's what I thought.\n", "");
-	len2 = printf("- What did you say?\n- %s\n- That's what I thought.\n", "");
+	len = _printf("");
+	len2 = printf("");
 	fflush(stdout);
 	if (len != len2)
 	{
