@@ -11,8 +11,17 @@ int main(void)
 {
 	int len, len2;
 
-	len = _printf("%p", NULL);
-	len2 = printf("%p", NULL);
+	len = _printf("->%s%c %d%%... %sPlease wait%c\n", "Loading", ':', 98, "", '\0');
+	len2 = printf("->%s%c %d%%... %sPlease wait%c\n", "Loading", ':', 98, "", '\0');
+	fflush(stdout);
+	if (len != len2)
+	{
+		printf("Lengths differ.\n");
+		fflush(stdout);
+		return (1);
+	}
+	len = _printf("->%s%c %i%%... %sPlease wait%c\n", "Loading", ':', 98, "", '\0');
+	len2 = printf("->%s%c %i%%... %sPlease wait%c\n", "Loading", ':', 98, "", '\0');
 	fflush(stdout);
 	if (len != len2)
 	{
